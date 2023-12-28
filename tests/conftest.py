@@ -15,6 +15,6 @@ async def get_cleint(bucket):
             Bucket=bucket,
             CreateBucketConfiguration={"LocationConstraint": "us-east-2"}
         )
-        assert(response["ResponseMetadata"]["HTTPStatusCode"] == 200)
+        assert response["ResponseMetadata"]["HTTPStatusCode"] == 200
         return client
     

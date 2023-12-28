@@ -11,7 +11,7 @@ class TestS3:
 
         client = AsyncS3()
         resp = client.upload_async(str(p), "s3://TEST/test/test.txt")
-        assert(resp == str(p))
+        assert resp == str(p)
 
     @pytest.mark.asyncio
     async def test_download(self, mocker, fpath):
@@ -19,4 +19,4 @@ class TestS3:
 
         client = AsyncS3()
         resp = client.download_async("s3://TEST/test/test.txt", str(p))
-        assert(resp == "s3://TEST/test/test.txt")
+        assert resp == "s3://TEST/test/test.txt"
