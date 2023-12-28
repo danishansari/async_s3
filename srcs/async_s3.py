@@ -26,7 +26,7 @@ class AsyncS3:
     
     async def upload_async(self, local_file_path: str, remote_s3_uri: str) -> str:
         """Async Function to upload a loacal file to s3-location asynchronously"""
-        assert os.path.exists(local_file_path), f"File {local_file_path} not Found!!"
+        os.makedirs(os.path.dirname(local_file_path), exist_ok=True)
 
         s3 = S3Url(remote_s3_uri)
         async with self.session.client("s3") as client:
