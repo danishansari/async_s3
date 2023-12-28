@@ -30,16 +30,12 @@ class AsyncS3:
 
         s3 = S3Url(remote_s3_uri)
         async with self.session.client("s3") as client:
-            response = await client.upload_file(
+            await client.upload_file(
                 Bucket = s3.bucket,
                 Filename = local_file_path,
                 Key = s3.key
             )
-        if response["Meta"]["HttpResponse"] == 200:
-            logger.info("Upload success!!")
-        else:
-            logger.error("Upload failed!!")
-            local_file_path = "error"
+
         return local_file_path
     
     async def download_async(self, remote_s3_uri: str, local_file_path: str) -> str:
@@ -48,14 +44,10 @@ class AsyncS3:
 
         s3 = S3Url(remote_s3_uri)
         async with self.session.client("s3") as client:
-            response = await client.download_file(
+            await client.download_file(
                 Bucket = s3.bucket,
                 Filename = local_file_path,
                 Key = s3.key
             )
-        if response["Meta"]["HttpResponse"] == 200:
-            logger.info("Upload success!!")
-        else:
-            logger.error("Upload failed!!")
-            local_file_path = "error"
+        
         return local_file_path
