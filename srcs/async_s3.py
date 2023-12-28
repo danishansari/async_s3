@@ -26,7 +26,7 @@ class AsyncS3:
     
     async def upload_async(self, local_file_path: str, remote_s3_uri: str) -> str:
         """Async Function to upload a loacal file to s3-location asynchronously"""
-        assert (os.path.exist(local_file_path), f"File {local_file_path} not Found!!")
+        assert (os.path.exists(local_file_path), f"File {local_file_path} not Found!!")
 
         s3 = S3Url(remote_s3_uri)
         with self.session.client("s3") as client:
@@ -44,7 +44,7 @@ class AsyncS3:
     
     async def download_async(self, remote_s3_uri: str, local_file_path: str) -> str:
         """Async Function to download a s3-file to a loacal asynchronously"""
-        assert (os.path.exist(local_file_path), f"File {local_file_path} not Found!!")
+        assert (os.path.exists(local_file_path), f"File {local_file_path} not Found!!")
 
         s3 = S3Url(remote_s3_uri)
         with self.session.client("s3") as client:
