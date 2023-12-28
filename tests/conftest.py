@@ -7,13 +7,13 @@ from aiomoto import *
 
 
 @pytest.fixture(scope="module")
-def mocker():
+def mocker() -> None:
     bucket = "TEST"
     with mock_s3():
         yield asyncio.run(get_cleint(bucket=bucket))
 
 
-async def get_cleint(bucket):
+async def get_cleint(bucket: str) -> Any:
     session = aioboto3.Session()
     async with session.client("s3") as client:
         response = await client.create_bucket(
