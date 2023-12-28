@@ -48,7 +48,7 @@ class AsyncS3:
 
         s3 = S3Url(remote_s3_uri)
         async with self.session.client("s3") as client:
-            response = await client.dowanload_file(
+            response = await client.download_file(
                 Bucket = s3.bucket,
                 Filename = local_file_path,
                 Key = s3.key
