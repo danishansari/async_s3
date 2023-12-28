@@ -2,10 +2,10 @@ from srcs.async_s3 import AsyncS3
 import argparse
 
 parser = argparse.ArgumentParser("Async-S3 upload/download app.")
-parser.add_argument("-u", "--upload", action="store_true", description="upload files mode")
-parser.add_argument("-d", "--download", action="store_true", description="download files mode")
-parser.add_argument("-s", "-src", "--source", type="str", description="source files location")
-parser.add_argument("-d", "-dst", "--destination", type="str", description="destination files location")
+parser.add_argument("-u", "--upload", action="store_true", help="upload files mode")
+parser.add_argument("-d", "--download", action="store_true", help="download files mode")
+parser.add_argument("-s", "-src", "--source", type=str, help="source files location")
+parser.add_argument("-d", "-dst", "--destination", type=str, help="destination files location")
 
 
 def main():
