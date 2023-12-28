@@ -40,7 +40,8 @@ class AsyncS3:
     
     async def download_async(self, remote_s3_uri: str, local_file_path: str) -> str:
         """Async Function to download a s3-file to a loacal asynchronously"""
-        os.makedirs(os.path.dirname(local_file_path), exist_ok=True)
+        if os.path.dirname(local_file_path):
+            os.makedirs(os.path.dirname(local_file_path), exist_ok=True)
 
         s3 = S3Url(remote_s3_uri)
         async with self.session.client("s3") as client:
