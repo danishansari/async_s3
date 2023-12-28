@@ -1,12 +1,12 @@
-import os
-import aioboto3
 import asyncio
-
-from loguru import logger
-
+import os
 from typing import Any
 
+import aioboto3
+from loguru import logger
+
 from srcs.utils import S3Url
+
 
 class AsyncS3:
     """ Class to access aws-s3 bucket to upload and dowanload files

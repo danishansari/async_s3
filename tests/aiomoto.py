@@ -4,7 +4,7 @@ conftest.py - Project Wide Fixtures
 ref: https://gist.github.com/giles-betteromics/12e68b88e261402fbe31c2e918ea4168
 """
 
-from typing import Callable, Any
+from typing import Any, Callable
 from unittest.mock import MagicMock
 
 import aiobotocore.awsrequest

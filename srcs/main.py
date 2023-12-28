@@ -1,5 +1,6 @@
-from srcs.async_s3 import AsyncS3
 import argparse
+
+from srcs.async_s3 import AsyncS3
 
 parser = argparse.ArgumentParser("Async-S3 upload/download app.")
 parser.add_argument("-u", "--upload", action="store_true", help="upload files mode")

@@ -1,9 +1,9 @@
-import pytest
-import aioboto3
 import asyncio
-from moto import mock_s3
 
+import aioboto3
+import pytest
 from aiomoto import *
+from moto import mock_s3
 
 
 @pytest.fixture(scope="module")
