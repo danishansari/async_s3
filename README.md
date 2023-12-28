@@ -25,5 +25,5 @@ S3 access using async apis (aioboto3)
 
 ## Test
 ```
-    pytohn -m pytest
+    python -m pytest
 ```
