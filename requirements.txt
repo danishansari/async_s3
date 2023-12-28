@@ -1,2 +1,7 @@
+# app requirements
 aioboto3==12.1.0
 loguru==0.7.2
+
+# test requirements
+pytest==7.4.3
+moto==4.2.12

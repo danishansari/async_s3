@@ -9,11 +9,12 @@ def mocker():
     yield asyncio.run(get_cleint(bucket=bucket))
 
 async def get_cleint(bucket):
-    session = aioboto3.session()
-    with session.client("s3") as client:
+    session = aioboto3.Session()
+    async with session.client("s3") as client:
         response = await client.create_bucket(
             Bucket=bucket,
-            CreateBucketConfiguration={"LocationConstraints", "us-east-2"}
+            CreateBucketConfiguration={"LocationConstraint": "us-east-2"}
         )
         assert(response["ResponseMetadata"]["HTTPStatusCode"] == 200)
         return client
+    
