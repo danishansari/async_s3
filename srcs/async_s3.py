@@ -1,5 +1,5 @@
 import asyncio
-import os
+import os, re
 from typing import Any
 
 import aioboto3
@@ -23,6 +23,10 @@ class AsyncS3:
     def download(self, remote_s3_uri: str, local_file_path: str) -> str:
         """Function to download a s3-file to a loacal asynchronously"""
         return asyncio.run(self.download_async(remote_s3_uri, local_file_path))
+    
+    def scan(self, remote_s3_uri: str, pattern: str = "") -> str:
+        """Function to scan a s3-location asynchronously"""
+        return asyncio.run(self.scan_async(remote_s3_uri, pattern))
     
     async def upload_async(self, local_file_path: str, remote_s3_uri: str) -> str:
         """Async Function to upload a loacal file to s3-location asynchronously"""
@@ -51,4 +55,16 @@ class AsyncS3:
                 Key = s3.key
             )
         
-        return local_file_path
+        return remote_s3_uri
+    
+    async def scan_async(self, remote_s3_uri: str, patter: str="") -> str:
+        """Function to scan a s3-location asynchronously"""
+        scanned_files_list = []
+
+        s3 = S3Url(remote_s3_uri)
+
+        async with self.session.client("s3") as client:
+            response = await client.list_objects(Bucket=s3.bucket, Prefix=s3.key)
+            for items in response["Contents"]:
+                scanned_files_list.append(items["Key"])
+        return scanned_files_list

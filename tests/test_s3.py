@@ -11,7 +11,7 @@ class TestS3():
     def test_upload(self, mocker: Any, tmp_path: Any):
         """test async-s3 upload function"""
         p = tmp_path / "test.txt"
-        p.write_text("test s3")
+        p.write_text("")
         
         client = AsyncS3()
         resp = client.upload(str(p), "s3://TEST/test/test.txt")
@@ -19,8 +19,13 @@ class TestS3():
 
         resp = asyncio.run(mocker.head_object(Bucket="TEST", Key="test/test.txt"))
         assert resp["ResponseMetadata"]["HTTPStatusCode"] == 200
-        
-        
+
+    def test_scan(self, mocker: Any, tmp_path: Any):
+        """test async-s3 upload function"""
+
+        client = AsyncS3()
+        resp = client.scan("s3://TEST/test")
+        assert resp == ["test/test.txt"]
         
     def test_download(self, mocker: Any, tmp_path: Any):
         """test async-s3 upload function"""
