@@ -1,5 +1,5 @@
-# AsyncS3
-S3 access using async api (aioboto3).
+# AsyncS3 - AWS Asynchronous access 
+Wrapper to access aws, using boto3 resources with the aiobotocore async backend 
 
 Provides:
  * Asynchronous s3-access
