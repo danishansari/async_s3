@@ -2,14 +2,13 @@
 S3 access using async apis (aioboto3).
 
 Provides:
-
-    * Asynchronous s3-access
-    * downloading of files from s3-bucket
-    * uploading of file to s3-bucket
-    * Mock Testing (aws-patched-response)
+ * Asynchronous s3-access
+ * downloading of files from s3-bucket
+ * uploading of file to s3-bucket
+ * Mock Testing (aws-patched-response)
 
 ## Dependencies
-    * python-3.11.0
+ * python-3.11.0
 
 ## Installation
 ```
