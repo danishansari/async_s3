@@ -9,6 +9,10 @@ Provides:
 
 ## Dependencies
  * python-3.11.0
+ * aioboto3-12.1.0
+ * loguru-0.7.2
+ * pytest-7.4.3
+ * moto-4.2.12
 
 ## Installation
 ```
