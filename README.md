@@ -1,5 +1,5 @@
 # AsyncS3
-S3 access using async apis (aioboto3).
+S3 access using async api (aioboto3).
 
 Provides:
  * Asynchronous s3-access
