@@ -40,9 +40,7 @@ class MockAWSResponse(aiobotocore.awsrequest.AioAWSResponse):
 
 class MockHttpClientResponse(aiohttp.client_reqrep.ClientResponse):
     """
-    Mocked HTP Response.
-
-    See <MockAWSResponse> Notes
+    Mocked HTTP Response.
     """
 
     def __init__(self, response: botocore.awsrequest.AWSResponse):
@@ -63,11 +61,16 @@ class MockHttpClientResponse(aiohttp.client_reqrep.ClientResponse):
         Return the headers encoded the way that aiobotocore expects them.
         """
         return {
-            k.encode("utf-8"): str(v).encode("utf-8") for k, v in self.response.headers.items()
+            k.encode("utf-8"): str(v).encode("utf-8")
+            for k, v in self.response.headers.items()
         }.items()
 
 
 class PatchedAWSResponse:
+    """
+    Pacthed AWS Response.
+    """
+
     def __init__(self, response: botocore.awsrequest.AWSResponse):
         self._response = response
         self.status_code = response.status_code
@@ -83,8 +86,6 @@ class PatchedAWSResponse:
 def patch_aiobotocore() -> None:
     """
     Pytest Fixture Supporting S3FS Mocks.
-
-    See <MockAWSResponse> Notes
     """
 
     def factory(original: Callable[[Any, Any], Any]) -> Callable[[Any, Any], Any]:
